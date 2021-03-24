@@ -38,9 +38,7 @@ function load (String $class):void {
  */
 function handler (Throwable $e):void {
 	global $RESULT;
-	$key = '1762571795:AAFcSN8NBv7gvyUjtcSXh1wzIas_cSKT4CM'; // Ключ API телеграм
-	$chat = 785442631;
-	$codes = [0 => 'huita', 1 => 'REQUEST_INCOMPLETE', 2 => 'REQUEST_INCORRECT', 4 => 'RESOURCE_LOST', 6 => 'INTERNAL_ERROR'];
+	$codes = [0 => 'lol', 1 => 'REQUEST_INCOMPLETE', 2 => 'REQUEST_INCORRECT', 4 => 'RESOURCE_LOST', 6 => 'INTERNAL_ERROR'];
 	while($e!==null){
 		$message = $codes[$e -> getCode()];
 		$code = $e -> getCode();
@@ -57,9 +55,7 @@ function handler (Throwable $e):void {
 			'line' => $e -> getLine(),
 			'trace' => $e -> getTrace()
 			];
-		$message = '*' . $message . "\n" . $e->getMessage() . '*';
-		$message = urlencode($message);
-		file_get_contents("https://api.telegram.org/bot$key/sendMessage?parse_mode=markdown&chat_id=$chat&text=$message");
+		
 		$e = $e -> getPrevious();
 	}
 }
